@@ -8,14 +8,9 @@ const Gameboard = (() => {
          side.addEventListener('click', function(event){
                     const player1_side = event.target.textContent
                     const player1 = new Player(player1_side);
-                    if (player1_side === 'X'){
-                        player2_side = 'O'
-                    } else {
-                        player2_side = 'X'
-                    }
-                    
+                    player1_side === 'X'? player2_side = 'O': player1_side = 'X'
                     const player2 = new Player(player2_side)
-                    console.log(player1, player2)
+                    console.log(player1, player2);
 
          } )
      })
