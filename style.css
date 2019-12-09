@@ -1,0 +1,22 @@
+#board {
+    background-color: #A6CFD5;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.choice {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.choice span {
+font-size: 30px;
+margin: 30px 20px;
+}
+
+h1, 
+h2 {
+    text-align: center;
+}
