@@ -39,7 +39,8 @@ const Gameboard = (() => {
             alert("NOT A VALID MOVE")
         }
 
-        checkWinner()
+        checkWinner(el)
+        
 
     
  } else {
@@ -89,10 +90,37 @@ const Gameboard = (() => {
         current_player == player1 ? current_player = player2 : current_player = player1 ;
     }
 
-    function checkWinner(){
+    function checkWinner(position){
+        if (checkVertical(position)){
+            console.log ("you won")
+        }
+        
+    }
+
+    function checkHorizontal(){
+        for (sub of gamearray){
+            let set = new Set(sub)
+            if (set.size == 1){
+                return true
+            }
+        }
+    }
+
+    function checkVertical(position){
+        verticalArray = []
+       for (let i = 0; i < gamearray.length; i++ ){
+         verticalArray.push(gamearray[i][position])
+       }
+       let set = new Set(verticalArray)
+       if (set.size == 1 ){
+           return true
+       }
 
     }
 
+    function checkDiagonal(){
+
+    }
 
     return {
     render
