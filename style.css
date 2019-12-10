@@ -8,7 +8,41 @@
   color: #fff;
   border: 6px solid #2c3e50;
   border-radius: 10px;
+  height: 400px;
+
 	
+}
+
+#board table {
+    width: 100%;
+}
+
+
+#board td {
+    width: 33.33%;
+}
+ 
+
+
+#board table td {
+    border-right:  2px solid #fff;
+    border-bottom: 2px solid #fff;;
+}
+
+#board td:nth-child(3){
+    border-right: none;   
+}
+
+#board tr:nth-child(3){
+    border-bottom: none;
+}
+
+
+#board tr
+ {
+    width: 100%;
+    text-align: center;
+    height: 132px;
 }
 
 
