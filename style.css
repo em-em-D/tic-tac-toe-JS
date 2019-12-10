@@ -18,15 +18,13 @@
 }
 
 
-#board td {
-    width: 33.33%;
-}
- 
-
 
 #board table td {
     border-right:  2px solid #fff;
-    border-bottom: 2px solid #fff;;
+    border-bottom: 2px solid #fff;
+    font-size: 40px;
+    width: 33.33%;
+
 }
 
 #board td:nth-child(3){
@@ -61,3 +59,27 @@ h1,
 h2 {
     text-align: center;
 }
+
+.choice span {
+    display: inline-block;
+    border: 3px solid;
+    border-radius: 3px;
+    width: 70px;
+
+}
+
+.x-choice:hover, 
+.o-choice:hover {
+    cursor: pointer;
+}
+
+.x-choice:hover {
+    background: #2c3e50;
+    color: #fff;
+}
+
+.o-choice:hover {
+    background: #F2DC5D;
+    color: #2c3e50;
+}
+

@@ -20,17 +20,17 @@ const Gameboard = (() => {
          } )
      })
 
-
-
-  
-
-     
+    
      function startGame(){
         render(); 
      }
 
 
      function updateBoard(subarr, el){     
+         
+        if(current_player){
+    
+
         if(gamearray[subarr][el] === ""){
         gamearray[subarray_index][el] = current_player.side;
         changeCurrentPlayer();
@@ -41,12 +41,16 @@ const Gameboard = (() => {
 
         checkWinner()
 
-    }
+    
+ } else {
+     alert("PLEASE CHOOSE A SIDE")
+ }
+}
 
 
 
 
-        function render(){
+    function render(){
             let row_index = 0 
             boardTable.innerHTML = "";
             console.log(`rendering with array ${gamearray}`)
