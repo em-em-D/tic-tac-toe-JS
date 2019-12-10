@@ -3,25 +3,29 @@ const Gameboard = (() => {
      const board = document.getElementById("board");
      const boardTable = document.getElementById("board-table");     
      const sides = document.querySelectorAll('.choice span');
-     const gamearray = [["","",""],["","",""],["","",""]];
+     let gamearray = [["","",""],["","",""],["","",""]];
      let  player1, player2, current_player; 
 
      sides.forEach(function(side){
-         side.addEventListener('click', function(event){
-                    let player1_side = event.target.textContent
-                    console.log(player1_side)
-                    player1 = new Player(player1_side);
-                    console.log(player1)
-                    player1_side === 'X'? player2_side = 'O': player2_side = 'X'
-                    player2 = new Player(player2_side);
-                    current_player = player1
-                     startGame();
-
-         } )
+         side.addEventListener('click', chooseSide) 
      })
 
+
+     function chooseSide(event){
+        
+            let player1_side = event.target.textContent
+            player1 = new Player(player1_side);
+            player1_side === 'X'? player2_side = 'O': player2_side = 'X'
+            player2 = new Player(player2_side);
+            current_player = player1
+             startGame();
+
+     }
     
      function startGame(){
+         
+    gamearray = [["","",""],["","",""],["","",""]];
+
         render(); 
      }
 
@@ -29,23 +33,20 @@ const Gameboard = (() => {
      function updateBoard(subarr, el){     
          
         if(current_player){
-    
-
         if(gamearray[subarr][el] === ""){
         gamearray[subarray_index][el] = current_player.side;
-        changeCurrentPlayer();
         render();
+        checkWinner(el);
+        changeCurrentPlayer();
         } else {
             alert("NOT A VALID MOVE")
         }
 
-        checkWinner(el)
-        
-
     
  } else {
-     alert("PLEASE CHOOSE A SIDE")
+     alert("PLEASE CHOOSE A SIDE");
  }
+
 }
 
 
@@ -72,7 +73,7 @@ const Gameboard = (() => {
             boardTable.innerHTML += tablerow
            
         }
-        const moves_td = document.querySelectorAll('.move');  
+        let moves_td = document.querySelectorAll('.move');  
         
         for(td of moves_td){
                td.addEventListener("click", function(e){
@@ -91,23 +92,28 @@ const Gameboard = (() => {
     }
 
     function checkWinner(position){
-        if (checkVertical(position)){
-            console.log ("you won")
+         if (checkHorizontal() || checkVertical(position) || checkDiagonal()){
+            gameResult()
+
+        } else if(checkDraw()) {
+            console.log("DRAW")
         }
-        
     }
 
-    function checkHorizontal(){
-        for (sub of gamearray){
-            let set = new Set(sub)
-            if (set.size == 1){
-                return true
+    function checkHorizontal(position){
+
+            for(let subarr of gamearray){
+                let set = new Set(subarr);
+
+
+            if(set.size === 1 && !set.has("")){
+                return true;
             }
         }
     }
 
     function checkVertical(position){
-        verticalArray = []
+        verticalArray = [];
        for (let i = 0; i < gamearray.length; i++ ){
          verticalArray.push(gamearray[i][position])
        }
@@ -118,13 +124,48 @@ const Gameboard = (() => {
 
     }
 
-    function checkDiagonal(){
+    function checkDiagonal(position){
+      let left_diagonal = new Set([gamearray[0][0], gamearray[1][1], gamearray[2][2]]);
+      let right_diagonal = new Set([gamearray[0][2], gamearray[1][1], gamearray[2][0]]);
 
+      if((left_diagonal.size === 1 && !left_diagonal.has('')) || (right_diagonal.size === 1 && !right_diagonal.has('') )){
+          return true;
+      } 
+
+
+    }
+
+
+    function checkDraw(){
+        let flat_array = gamearray.flat()
+        const notEmpty = (el) => el != "";
+    return flat_array.every(notEmpty);
     }
 
     return {
     render
     };
+
+
+    function gameResult(){
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `<p class="result"> Game Over, the winner is ${current_player.side} </p>`
+        console.log(newDiv)
+        board.appendChild(newDiv);
+        let moves_td = document.querySelectorAll('.move');  
+        
+        for(td of moves_td){
+               td.removeEventListener("click", function(e){
+                subarray_index = Number(e.target.className[0])
+                element_index = Number(e.target.className[1])
+                updateBoard(subarray_index, element_index)
+            }) 
+        }
+
+   
+    }
+
+
   })();
 
 
