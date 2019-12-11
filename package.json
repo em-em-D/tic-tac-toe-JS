@@ -1,0 +1,22 @@
+{
+  "name": "tic-tac-toe-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/em-em-D/tic-tac-toe-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/em-em-D/tic-tac-toe-JS/issues"
+  },
+  "homepage": "https://github.com/em-em-D/tic-tac-toe-JS#readme",
+  "devDependencies": {
+    "eslint": "^6.7.2"
+  }
+}

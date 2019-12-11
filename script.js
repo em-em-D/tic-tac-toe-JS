@@ -8,6 +8,9 @@ const Gameboard = (() => {
     ["", "", ""]
   ];
   let player1, player2, current_player;
+  const turnsDiv = document.querySelector('.turns'); 
+
+
 
   sides.forEach(function(side) {
     side.addEventListener("click", chooseSide);
@@ -20,9 +23,12 @@ const Gameboard = (() => {
     player2 = new Player(player2_side);
     current_player = player1;
     startGame();
+
   }
 
   function startGame() {
+  
+    showPlayerTurn()
     gamearray = [
       ["", "", ""],
       ["", "", ""],
@@ -38,7 +44,6 @@ const Gameboard = (() => {
         gamearray[subarray_index][el] = current_player.side;
         render();
         checkWinner(el);
-        changeCurrentPlayer();
       } else {
         alert("NOT A VALID MOVE");
       }
@@ -50,7 +55,6 @@ const Gameboard = (() => {
   function render() {
     let row_index = 0;
     boardTable.innerHTML = "";
-    console.log(`rendering with array ${gamearray}`);
     for (moves of gamearray) {
       let td_index = 0;
       let tablerow = `<tr> `;
@@ -70,6 +74,7 @@ const Gameboard = (() => {
     for (td of moves_td) {
       td.addEventListener("click", addEventToData);
     }
+
   }
 
   function addEventToData(e) {
@@ -89,6 +94,11 @@ const Gameboard = (() => {
       gameWinner();
     } else if (checkDraw()) {
         gameDraw()
+    } else {
+      changeCurrentPlayer();
+      showPlayerTurn()
+
+
     }
   }
 
@@ -145,11 +155,12 @@ const Gameboard = (() => {
   };
 
   function gameWinner() {
+    hideSelectors();
     const newDiv = document.createElement("div");
-    newDiv.innerHTML = `<p class="result"> Game Over, the winner is ${current_player.side} </p>
+    newDiv.className = 'result-div'
+    newDiv.innerHTML = `<p class="result"> Game Over, the winner is ${current_player.side} 🎉🎉</p>
         <button class="btn btn-lg btn-success restart"> Restart </button>`;
-    console.log(newDiv);
-    board.appendChild(newDiv);
+    turnsDiv.appendChild(newDiv);
     let moves_td = document.querySelectorAll(".move");
     console.log(moves_td);
     for (td of moves_td) {
@@ -165,10 +176,12 @@ const Gameboard = (() => {
 }
 
 function gameDraw(){
+  hideSelectors()
     const newDiv = document.createElement("div");
+    newDiv.className = 'result-div'
     newDiv.innerHTML = `<p class="result"> It's a draw, no winner here!  </p>
         <button class="btn btn-lg btn-success restart"> Start Again </button>`;
-        board.appendChild(newDiv);
+        turnsDiv.appendChild(newDiv);
         let moves_td = document.querySelectorAll(".move");
 
         for (td of moves_td) {
@@ -177,12 +190,30 @@ function gameDraw(){
           const restart_button = document.querySelector(".restart"); 
           restart_button.addEventListener("click", restart);
 }
+
+
+function showPlayerTurn(){
+  if (current_player){
+  turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.side}'s turn! </p>`
+
+  }
+}
+
+function hideSelectors(){
+  document.querySelector('h2').style.display = 'none';
+  document.querySelector('.choice').style.display = 'none'
+  document.querySelector('h1').style.display = 'none'
+  document.querySelector('.showTurn').style.display = 'none'
+}
 })();
 
 
 
-const Player = function(side) {
-  return { side };
+const Player = function(side, name) {
+  return { side, name };
+
 };
+
+
 
 Gameboard.render();
