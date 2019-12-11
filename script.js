@@ -211,7 +211,6 @@ document.querySelector('.choice').style.display = "block";
   function hideSelectors() {
     document.querySelector("h2").style.display = "none";
     document.querySelector(".choice").style.display = "none";
-    //document.querySelector("h1").style.display = "none";
   }
 })();
 
