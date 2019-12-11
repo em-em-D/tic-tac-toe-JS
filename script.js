@@ -14,20 +14,20 @@ const Gameboard = (() => {
   namesForm.addEventListener("submit", displayingName);
 
   function displayingName(e) {
-    e.preventDefault()
-    player1Name = document.querySelector('#player1Name').value;
-    player2Name = document.querySelector('#player2Name').value;
-    document.querySelector('h2').textContent = `Player 1 ${player1Name}, Choose a side`
-namesForm.style.display = 'none';
-document.querySelector('.choose-side-title').style.display = 'block';
-document.querySelector('.choice').style.display = "block";
-
+    e.preventDefault();
+    player1Name = document.querySelector("#player1Name").value;
+    player2Name = document.querySelector("#player2Name").value;
+    document.querySelector(
+      "h2"
+    ).textContent = `Player 1 ${player1Name}, Choose a side`;
+    namesForm.style.display = "none";
+    document.querySelector(".choose-side-title").style.display = "block";
+    document.querySelector(".choice").style.display = "block";
   }
 
   sides.forEach(function(side) {
     side.addEventListener("click", chooseSide);
   });
-
 
   function chooseSide(event) {
     let player1_side = event.target.textContent;
@@ -37,7 +37,6 @@ document.querySelector('.choice').style.display = "block";
     player2 = new Player(player2_side, player2Name);
     current_player = player1;
     startGame();
- 
   }
 
   function startGame() {
@@ -112,7 +111,7 @@ document.querySelector('.choice').style.display = "block";
     }
   }
 
-  function checkHorizontal(position) {
+  function checkHorizontal() {
     for (let subarr of gamearray) {
       let set = new Set(subarr);
 
@@ -201,10 +200,8 @@ document.querySelector('.choice').style.display = "block";
   function showPlayerTurn() {
     if (current_player) {
       turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.name}'s turn! </p> <button class = "btn btn-lg btn-success restart" id = "game-restart"> RESTART </button>`;
-      const gameReset = document.getElementById("game-restart")
-      gameReset.addEventListener("click", restart )
-
-      
+      const gameReset = document.getElementById("game-restart");
+      gameReset.addEventListener("click", restart);
     }
   }
 
