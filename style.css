@@ -2,22 +2,22 @@
     display: block;
 }
 
-.form-group {
-    display: block;
-}
 
 .welcome-title {
     text-align: center;
 }
 
-
+.form-names{
+    display: flex;
+    justify-content: space-evenly;
+}
 .names {
     max-width: 700px;
     margin: 0 auto;
 }
 
 
-.welcome-form .form-group {
+.welcome-form form {
     max-width: 300px;
     margin: 20px auto;
     font-size: 20px;
@@ -129,7 +129,7 @@ h2 {
 
 
 .restart {
-    margin: 0 auto;
+    margin: 30px auto;
     display: block;
 }
 

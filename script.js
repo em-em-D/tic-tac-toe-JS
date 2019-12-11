@@ -59,10 +59,10 @@ document.querySelector('.choice').style.display = "block";
         render();
         checkWinner(el);
       } else {
-        alert("NOT A VALID MOVE");
+        alert("This is not a valid move ");
       }
     } else {
-      alert("PLEASE CHOOSE A SIDE");
+      alert("Please enter your name and choice a side ");
     }
   }
 
@@ -168,8 +168,7 @@ document.querySelector('.choice').style.display = "block";
     document.querySelector(".showTurn").style.display = "none";
     const newDiv = document.createElement("div");
     newDiv.className = "result-div";
-    newDiv.innerHTML = `<p class="result"> Game Over, the winner is ${current_player.name} 🎉🎉</p>
-        <button class="btn btn-lg btn-success restart"> Restart </button>`;
+    newDiv.innerHTML = `<p class="result"> Game Over, the winner is ${current_player.name} 🎉🎉</p>`;
     turnsDiv.appendChild(newDiv);
     let moves_td = document.querySelectorAll(".move");
     for (let td of moves_td) {
@@ -188,8 +187,7 @@ document.querySelector('.choice').style.display = "block";
     document.querySelector(".showTurn").style.display = "none";
     const newDiv = document.createElement("div");
     newDiv.className = "result-div";
-    newDiv.innerHTML = `<p class="result"> It's a draw, no winner here!  </p>
-        <button class="btn btn-lg btn-success restart"> Restart </button>`;
+    newDiv.innerHTML = `<p class="result"> It's a draw, no winner here!  </p>`;
     turnsDiv.appendChild(newDiv);
     let moves_td = document.querySelectorAll(".move");
 
@@ -202,7 +200,11 @@ document.querySelector('.choice').style.display = "block";
 
   function showPlayerTurn() {
     if (current_player) {
-      turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.name}'s turn! </p>`;
+      turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.name}'s turn! </p> <button class = "btn btn-lg btn-success restart" id = "game-restart"> RESTART </button>`;
+      const gameReset = document.getElementById("game-restart")
+      gameReset.addEventListener("click", restart )
+
+      
     }
   }
 
