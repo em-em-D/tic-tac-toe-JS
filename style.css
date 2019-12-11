@@ -11,7 +11,10 @@
 }
 
 
-
+.names {
+    max-width: 700px;
+    margin: 0 auto;
+}
 
 
 .welcome-form .form-group {
@@ -149,4 +152,16 @@ h2 {
 
 .result-div {
     margin: 30px auto;
+}
+
+
+.play-button {
+    display: block;
+    margin: 20px auto;
+}
+
+
+.choose-side-title, 
+.choice {
+    display: none;
 }
