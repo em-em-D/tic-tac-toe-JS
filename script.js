@@ -199,7 +199,8 @@ const Gameboard = (() => {
 
   function showPlayerTurn() {
     if (current_player) {
-      turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.name}'s turn! </p> <button class = "btn btn-lg btn-success restart" id = "game-restart"> RESTART </button>`;
+      turnsDiv.innerHTML = `<p class="showTurn bg-primary"> ${current_player.name}'s turn! </p>
+                           <button class = "btn btn-lg btn-success restart" id = "game-restart"> RESTART </button>`;
       const gameReset = document.getElementById("game-restart");
       gameReset.addEventListener("click", restart);
     }
