@@ -1,0 +1,147 @@
+.game-container {
+  display: block;
+}
+
+.welcome-title {
+  text-align: center;
+}
+
+.form-names {
+  display: flex;
+  justify-content: space-evenly;
+}
+.names {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.welcome-form form {
+  max-width: 300px;
+  margin: 20px auto;
+  font-size: 20px;
+}
+
+.welcome-container {
+  text-align: center;
+}
+
+.welcome-container img {
+  display: block;
+  margin: 30px auto;
+  width: 300px;
+}
+#board {
+  background-color: #a6cfd5;
+  width: 80%;
+  margin: 0 auto;
+
+  margin: 0 auto;
+  background-color: #34495e;
+  color: #fff;
+  border: 6px solid #2c3e50;
+  border-radius: 10px;
+  height: 400px;
+}
+
+#board table {
+  width: 100%;
+}
+
+#board table td {
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  font-size: 40px;
+  width: 33.33%;
+}
+
+#board td:nth-child(3) {
+  border-right: none;
+}
+
+#board tr:nth-child(3) {
+  border-bottom: none;
+}
+
+#board tr {
+  width: 100%;
+  text-align: center;
+  height: 132px;
+}
+
+.choice {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.choice span {
+  font-size: 30px;
+  margin: 30px 20px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.choice span {
+  display: inline-block;
+  border: 3px solid;
+  border-radius: 3px;
+  width: 70px;
+}
+
+.x-choice:hover,
+.o-choice:hover {
+  cursor: pointer;
+}
+
+.x-choice:hover {
+  background: #2c3e50;
+  color: #fff;
+}
+
+.o-choice:hover {
+  background: #f2dc5d;
+  color: #2c3e50;
+}
+
+.result {
+  color: #2c3e50;
+  font-size: 26px;
+  text-align: center;
+}
+
+.restart {
+  margin: 30px auto;
+  display: block;
+}
+
+.turns {
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.main-menu a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+.main-menu {
+  display: block;
+  margin: 30px auto;
+}
+
+.result-div {
+  margin: 30px auto;
+}
+
+.play-button {
+  display: block;
+  margin: 20px auto;
+}
+
+.choose-side-title,
+.choice {
+  display: none;
+}
